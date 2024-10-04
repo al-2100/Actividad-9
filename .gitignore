@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos de entorno virtual
+env/
+venv/
+ENV/
+.venv/
+.env
+.ENV
+
+# Configuración del editor de código
+.vscode/
+.idea/
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de logs y dumps
+*.log
+*.csv
+*.sqlite3
+
+# Archivos de configuración de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración de Pytest y coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Archivos de cobertura
+*.cover
+*.coverage.*
+
+# Directorio de pruebas
+tests/__pycache__/
+tests/.pytest_cache/
+
+# Archivos de despliegue y empaquetado
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+
+# Archivos de compilación y otros
+*.bak
+*.old
+*.tmp
