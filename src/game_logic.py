@@ -14,3 +14,12 @@ def adivinar_letra(letra, palabra, progreso,intentos_restantes):
         return True, intentos_restantes
     else:
         return False, intentos_restantes - 1
+
+def dar_pista(palabra, progreso, cont_pistas):
+    pistas = []
+    for i in len(palabra):
+        if progreso[i] == "_":
+            progreso[i] = palabra[i]
+            pistas.append(palabra[i])
+            break
+    return random.choice(pistas), cont_pistas - 1
