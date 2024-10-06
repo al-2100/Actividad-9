@@ -23,15 +23,5 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: |
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-      - name: Create binary distribution
-        run: |
-          python setup.py bdist_wheel
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: word-guessing-game
-          path: dist/*.whl
+        run:
+          pip install -r requirements.txt
