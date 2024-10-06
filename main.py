@@ -1,7 +1,36 @@
+from src.game_logic import seleccionar_palabra, adivinar_letra, dar_pista
+
+
 def main():
     print("Bienvenido al Juego de Adivinanza de Palabras!")
-    print("La configuración inicial del juego se ha completado.")
+    palabra_secreta = seleccionar_palabra()
+    progreso = ["_"] * len(palabra_secreta)
+    intentos_restantes = 5
+    pistas_restantes = 2
 
+    while True:
+        print("Palabra: ", " ".join(progreso))
+
+        # Pista
+        if pistas_restantes > 0 and input("¿Quieres una pista? (s/n): ").lower() == "s":
+            progreso, pistas_restantes = dar_pista(palabra_secreta, progreso, pistas_restantes)
+            continue
+
+        # Adivinar letra
+        letra = input("Adivina una letra: ")
+        adivina, intentos_restantes = adivinar_letra(letra, palabra_secreta, progreso, intentos_restantes)
+        if adivina:
+            print(f"¡Correcto! La letra {letra} está en la palabra.")
+        else:
+            if intentos_restantes == 0:
+                print(f"¡Perdiste! La palabra era {palabra_secreta}.")
+                break
+            else:
+                print(f"¡Incorrecto! La letra {letra} no está en la palabra. Te quedan {intentos_restantes} intentos.")
+
+        if "_" not in progreso:
+            print("¡Felicidades! Has adivinado la palabra.")
+            break
 
 if __name__ == "__main__":
     main()
