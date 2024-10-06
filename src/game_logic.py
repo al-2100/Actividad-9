@@ -26,3 +26,11 @@ def dar_pista(palabra, progreso, cont_pistas):
     cont_pistas -= 1
     print(f"La pista es la letra {pista}. Te quedan {cont_pistas} pistas.")
     return progreso, cont_pistas
+
+def verificar_fin_juego(progreso, intentos_restantes):
+    if '_' not in progreso:
+        return "victoria"
+    elif intentos_restantes <= 0:
+        return "derrota"
+    else:
+        return "continua"
