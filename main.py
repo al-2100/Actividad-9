@@ -1,4 +1,4 @@
-from src.game_logic import seleccionar_palabra, adivinar_letra, dar_pista
+from src.game_logic import seleccionar_palabra, adivinar_letra, dar_pista, verificar_fin_juego
 
 
 def main():
@@ -22,14 +22,15 @@ def main():
         if adivina:
             print(f"¡Correcto! La letra {letra} está en la palabra.")
         else:
-            if intentos_restantes == 0:
-                print(f"¡Perdiste! La palabra era {palabra_secreta}.")
-                break
-            else:
-                print(f"¡Incorrecto! La letra {letra} no está en la palabra. Te quedan {intentos_restantes} intentos.")
+            print(f"¡Incorrecto! La letra {letra} no está en la palabra. Te quedan {intentos_restantes} intentos.")
 
-        if "_" not in progreso:
-            print("¡Felicidades! Has adivinado la palabra.")
+        # Verificar si el juego ha terminado
+        resultado = verificar_fin_juego(progreso, intentos_restantes)
+        if resultado == "victoria":
+            print(f"¡Felicidades! Has adivinado la palabra: {palabra_secreta}")
+            break
+        elif resultado == "derrota":
+            print(f"¡Perdiste! La palabra era: {palabra_secreta}")
             break
 
 if __name__ == "__main__":
